@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Estatísticas e Mapa de Calor — Gestão Urbana{% endblock %}
+
+{% block content %}
+<!--
+  SPRINT 3 - PASSO 2 (Historieta 5): Painel Analítico e Mapa de Calor
+  ORIENTAÇÃO: Exibir métricas agregadas via Pandas e renderizar a camada
+  Leaflet.heat utilizando os dados de /analytics/api/heatmap/.
+-->
+<div class="row g-3">
+    <div class="col-12">
+        <h1 class="h4 mb-3">Painel de Estatísticas e Mapa de Calor</h1>
+        <div id="heatmap" class="map-container rounded shadow-sm"></div>
+    </div>
+</div>
+{% endblock %}

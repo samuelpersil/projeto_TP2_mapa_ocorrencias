@@ -1,0 +1,19 @@
+site_name: Gestão Urbana — UnB TP2 2/2026
+site_description: Sistema de Gestão de Ocorrências Urbanas com Geolocalização (UnB TP2 2/2026)
+theme:
+  name: material
+  language: pt-BR
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+
+nav:
+  - Início: index.md
+  - Arquitetura: arquitetura.md
+  - Historietas: historietas.md
+  - Guia TDD: guia_tdd.md

@@ -1,0 +1,31 @@
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+exclude = [
+    ".venv",
+    "*/migrations/*",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP"]
+
+[tool.pylint.main]
+load-plugins = ["pylint_django"]
+django-settings-module = "config.settings"
+ignore-paths = ["^.*/migrations/.*$"]
+
+[tool.pylint.messages_control]
+disable = [
+    "fixme",
+    "unused-argument",
+    "too-few-public-methods",
+    "missing-module-docstring",
+]
+
+[tool.pylint.format]
+max-line-length = 88
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+python_files = ["test_*.py"]
+testpaths = ["tests"]

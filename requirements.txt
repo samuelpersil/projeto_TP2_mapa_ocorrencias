@@ -1,10 +1,13 @@
 ruff
 pytest
+pytest-cov
 django
 pandas
 pylint
 coverage
 mkdocs
+mkdocs-material
 mkdocstrings[python]
 pytest-django
 pylint-django
+Pillow

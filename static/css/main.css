@@ -1,0 +1,13 @@
+/* Estilos base mobile-first para o sistema Gestão Urbana */
+
+.map-container {
+    width: 100%;
+    height: 70vh;
+    min-height: 360px;
+}
+
+@media (min-width: 768px) {
+    .map-container {
+        height: 78vh;
+    }
+}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Mapa Comunitário — Gestão Urbana{% endblock %}
+
+{% block content %}
+<!--
+  SPRINT 1 - PASSO 2 (Historieta 2): Mapa Comunitário Interativo
+  ORIENTAÇÃO: Conectar o container #map ao Leaflet.js (static/js/map.js)
+  e consumir o endpoint /api/incidents/ para renderizar os pinos clicáveis.
+-->
+<div class="row g-3">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <h1 class="h4 mb-0">Mapa de Ocorrências</h1>
+            <a href="{% url 'incidents:create_incident' %}" class="btn btn-primary btn-sm">
+                + Nova Ocorrência
+            </a>
+        </div>
+        <div id="map" class="map-container rounded shadow-sm"></div>
+    </div>
+</div>
+{% endblock %}
