@@ -1,0 +1,10 @@
+ruff
+pytest
+django
+pandas
+pylint
+coverage
+mkdocs
+mkdocstrings[python]
+pytest-django
+pylint-django
