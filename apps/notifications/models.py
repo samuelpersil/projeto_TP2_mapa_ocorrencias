@@ -2,7 +2,8 @@
 
 Responsável pelo Módulo 4: Renato Gabriel Lima da Silva.
 """
-
+from django.conf import settings
+from django.core.exceptions import ValidationError
 from django.db import models
 
 
@@ -36,13 +37,41 @@ class AreaSubscription(models.Model):
     # center_lng (FloatField) e radius_km (FloatField).
     # --------------------------------------------------------------------------
 
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="area_subscriptions",
+    )
+    label = models.CharField(max_length=120)
+    center_lat = models.FloatField()
+    center_lng = models.FloatField()
+    radius_km = models.FloatField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
     class Meta:
         verbose_name = "Inscrição em Área"
         verbose_name_plural = "Inscrições em Áreas"
+        ordering = ["-created_at"]
+
+    def clean(self) -> None:
+        super().clean()
+        errors: dict[str, str] = {}
+
+        if self.radius_km is not None and self.radius_km <= 0:
+            errors["radius_km"] = "O raio deve ser maior que zero."
+
+        if self.center_lat is not None and not (-90.0 <= self.center_lat <= 90.0):
+            errors["center_lat"] = "A latitude deve estar entre -90 e 90."
+
+        if self.center_lng is not None and not (-180.0 <= self.center_lng <= 180.0):
+            errors["center_lng"] = "A longitude deve estar entre -180 e 180."
+
+        if errors:
+            raise ValidationError(errors)
 
     def __str__(self) -> str:
         """Retorna o rótulo da área monitorada."""
-        raise NotImplementedError("TODO: Implementar seguindo TDD")
+        return self.label
 
 
 class Notification(models.Model):
